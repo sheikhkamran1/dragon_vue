@@ -1,0 +1,103 @@
+
+<template>
+  <template-view>
+    <section>
+      <!-- Slides -->
+      <slide-component />
+      <!-- About us -->
+      <section class="container-fluid py-5" style="background-color:#d9e8ed">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mb-2">
+              <!-- <h3 class="text-secondary text-center">{{ $about->title }}</h3> -->
+              <h3 class="text-secondary">{{ about.title }}</h3>
+              <p class="" v-html="about.description"></p>
+              <a href="" class="text-secondary">Learn More <i class="fa fa-long-arrow-right ms-1"
+                  aria-hidden="true"></i></a>
+            </div>
+            <div class="col-md-6">
+              <img :src="about.image" alt="" class="img-fluid center" style="border: 2px solid #00aeef ">
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Message From Principle -->
+      <section class="container-fluid">
+        <div class="container py-5">
+          <div class="row py-3" v-for="(message, index) in message" :key="index">
+            <div class="col-md-3 img-div order-md-first" v-if="index % 2 == 0">
+
+              <img :src="message.image" alt="" class="img-fluid image-con" width="200">
+              <h4 class="py-3 text-center">{{ message.name }} <br> <span class="text-secondary"
+                  style="font-size:large;">Message from {{
+                    message.title }}</span></h4>
+            </div>
+
+            <div class="col-md-3 img-div order-md-last" v-else>
+
+              <img :src="message.image" alt="" class="img-fluid image-con" width="200">
+              <h4 class="py-3 text-center">{{ message.name }} <br> <span class="text-secondary"
+                  style="font-size:large;">Message from {{
+                    message.title }}</span></h4>
+            </div>
+            <div class="col-md-9 message-div">
+              <i class="fa-solid fa-quote-left fa-secondary" style="font-size: 25px; color: grey;"></i>
+              <p v-html="message.content" class="text-align-right text-secondary"></p>
+              <i class="fa fa-quote-right float-end" aria-hidden="true" style="font-size: 25px; color: grey;"></i>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <carousel :nav="false">
+
+          <img src="https://placeimg.com/200/200/any?1">
+
+          <img src="https://placeimg.com/200/200/any?2">
+
+          <img src="https://placeimg.com/200/200/any?3">
+
+          <img src="https://placeimg.com/200/200/any?4">
+
+        </carousel>
+      </div>
+    </section>
+  </template-view>
+</template>
+ 
+<script>
+import TemplateView from '@/views/TemplateView.vue'
+import SlideComponent from '@/components/SlideComponent.vue'
+import { mapGetters } from 'vuex';
+import carousel from 'vue-owl-carousel2'
+
+export default {
+  components: { TemplateView, SlideComponent, carousel },
+  computed: {
+    ...mapGetters({
+      about: 'get_about',
+      message: 'get_message',
+    })
+  }
+}
+</script>
+ 
+<style scoped>
+.image-con {
+  height: 150px;
+  width: 150px;
+  /* background-color: red; */
+  box-shadow: 20px 20px 10px #e9faff;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid #00aeef;
+}
+
+@media only screen and (max-width: 767px) {
+  .message-div {
+    padding-top: 10px;
+  }
+}
+</style>
+ 
