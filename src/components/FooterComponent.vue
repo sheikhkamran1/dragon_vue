@@ -5,7 +5,7 @@
                 <div class="col-md-3">
                     <div class="img-div">
                         <img src="https://dragonsaving.com.np/wp-content/uploads/2021/01/dragon-logo-small.png" alt=""
-                        width="80"  height="80" class="logo img-fluid">
+                        width="80"  height="80" class="logo img-fluid mx-auto d-block">
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -91,15 +91,5 @@ a {
 .img-div{
     width: 100%;
     margin-top:30%;
-}
-.logo{
-    display: block;
-    margin: 0px auto;
-}
-@media only screen and (max-width: 767px) {
-    .img-div{
-    /* width: 100%; */
-    margin-top:0%;
-}
 }
 </style>

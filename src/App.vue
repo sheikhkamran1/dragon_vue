@@ -12,13 +12,14 @@
 import { mapActions } from 'vuex';
 export default {
   methods: {
-    ...mapActions(['getProfile', 'getSlides', 'getAbout', 'getMessage'])
+    ...mapActions(['getProfile', 'getSlides', 'getAbout', 'getMessage','getSchemes'])
   },
   created() {
     this.getProfile(),
       this.getSlides(),
       this.getAbout(),
-      this.getMessage()
+      this.getMessage(),
+      this.getSchemes()
   }
 }
 </script>
@@ -34,7 +35,6 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 /* 

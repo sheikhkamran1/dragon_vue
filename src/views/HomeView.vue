@@ -27,7 +27,7 @@
           <div class="row py-3" v-for="(message, index) in message" :key="index">
             <div class="col-md-3 img-div order-md-first" v-if="index % 2 == 0">
 
-              <img :src="message.image" alt="" class="img-fluid image-con" width="200">
+              <img :src="message.image" alt="" class="img-fluid image-con mx-auto d-block" width="200">
               <h4 class="py-3 text-center">{{ message.name }} <br> <span class="text-secondary"
                   style="font-size:large;">Message from {{
                     message.title }}</span></h4>
@@ -35,33 +35,39 @@
 
             <div class="col-md-3 img-div order-md-last" v-else>
 
-              <img :src="message.image" alt="" class="img-fluid image-con" width="200">
+              <img :src="message.image" alt="" class="img-fluid image-con mx-auto d-block" width="200">
               <h4 class="py-3 text-center">{{ message.name }} <br> <span class="text-secondary"
-                  style="font-size:large;">Message from {{
-                    message.title }}</span></h4>
+                  style="font-size:large;">Message from {{ message.title }}</span></h4>
             </div>
             <div class="col-md-9 message-div">
-              <i class="fa-solid fa-quote-left fa-secondary" style="font-size: 25px; color: grey;"></i>
-              <p v-html="message.content" class="text-align-right text-secondary"></p>
-              <i class="fa fa-quote-right float-end" aria-hidden="true" style="font-size: 25px; color: grey;"></i>
+              <div>
+                <!-- <i class="fa-solid fa-quote-left fa-secondary" style="font-size: 25px; color: grey;"></i> -->
+                <p v-html="message.content" class="text-align-right text-secondary"></p>
+                <!-- <i class="fa fa-quote-right float-end" aria-hidden="true" style="font-size: 25px; color: grey;"></i> -->
+              </div>
               <hr>
             </div>
           </div>
         </div>
       </section>
-      <div class="container">
-        <carousel :nav="false">
-
-          <img src="https://placeimg.com/200/200/any?1">
-
-          <img src="https://placeimg.com/200/200/any?2">
-
-          <img src="https://placeimg.com/200/200/any?3">
-
-          <img src="https://placeimg.com/200/200/any?4">
-
-        </carousel>
+      <!-- Schemes -->
+      <div class="container" v-if="schemeLoading">
+        loading...
       </div>
+      <section v-else>
+        <div class="container-fluid bg-light">
+          <div class="container">
+            <h3 class="text-secondary text-center  py-3">Our Schemes</h3>
+            <!-- {{ schemes }} -->
+            <carousel :autoplay="true" :items="4" :nav="false"
+              :responsive="{ 0: { items: 1, nav: false }, 600: { items: 4, nav: false } }">
+              <div v-for="(scheme, index) in schemes" :key="index" class="py-5">
+                <el-button @click="visible = true" class="py-2 mx-auto d-block">{{ scheme.name }}</el-button><br>
+              </div>
+            </carousel>
+          </div>
+        </div>
+      </section>
     </section>
   </template-view>
 </template>
@@ -73,11 +79,13 @@ import { mapGetters } from 'vuex';
 import carousel from 'vue-owl-carousel2'
 
 export default {
-  components: { TemplateView, SlideComponent, carousel },
+  components: { TemplateView, SlideComponent, carousel},
   computed: {
     ...mapGetters({
       about: 'get_about',
       message: 'get_message',
+      schemes: 'get_schemes',
+      schemeLoading: 'get_schemes_loading'
     })
   }
 }
