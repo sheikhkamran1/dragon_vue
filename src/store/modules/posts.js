@@ -1,21 +1,21 @@
 import { axiosApi } from "@/config/axios"
 
 export const state = {
-    menu: {}
+    posts: []
 }
 export const getters = {
-    get_menu: (state)=>state.menu
+    get_posts: (state)=>state.posts
 }
 export const mutations = {
-    set_menu: (state,data)=>state.menu = data
+    set_posts: (state,data)=>state.posts = data
 }
 export const actions = {
-    async getMenu({commit}){
+    async getPosts({commit}){
         try{
-            var response = await axiosApi.get("menu")
+            var response = await axiosApi.get("posts")
             console.warn(response.data.data)
             if(response.status==200){
-                commit('set_menu',response.data.data)
+                commit('set_posts',response.data.data)
             }
         }
         catch(e){

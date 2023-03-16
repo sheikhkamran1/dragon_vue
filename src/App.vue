@@ -12,14 +12,17 @@
 import { mapActions } from 'vuex';
 export default {
   methods: {
-    ...mapActions(['getProfile', 'getSlides', 'getAbout', 'getMessage','getSchemes'])
+    ...mapActions(['getProfile', 'getSlides', 'getAbout', 'getMessage','getSchemes','getMenus','getPosts','getOffers'])
   },
   created() {
     this.getProfile(),
       this.getSlides(),
       this.getAbout(),
       this.getMessage(),
-      this.getSchemes()
+      this.getSchemes(),
+      this.getMenus(),
+      this.getPosts(),
+      this.getOffers()
   }
 }
 </script>

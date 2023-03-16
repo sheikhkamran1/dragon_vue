@@ -1,85 +1,49 @@
 <template>
-    <div>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container">
-    <a class="navbar-brand" href="#">Navbarhhhhhhhhhhh</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <!-- <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown" v-for="(menu, index) in menus" :key="index">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+              v-if="menu.posts.length > 0">
+              {{ menu.name }}
+            </a>
+            <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" v-else>
+              {{ menu.name }}
+            </a>
+            <ul class="dropdown-menu" v-if="menu.posts.length > 0">
+              <li><a class="dropdown-item" href="#" v-for="(submenu,i) in menu.posts" :key="i">{{ submenu.title }}</a></li>
+              
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-    <!-- <nav class="navbar navbar-expand-lg" style="background-color: #00aeef !important">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
-                    @foreach ($menus as $menu)
-                        <li class="nav-item dropdown">
-                            @if (count($menu->posts) > 0)
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    {{ $menu->name }}
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            @else
-                                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    {{ $menu->name }}
-                                </a>
-                            @endif
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-</div>
+  </nav>
 </template>
 
 <script>
-    export default {
-        name:"NavBar",
+import { mapGetters } from 'vuex';
+
+export default {
+  name: "NavBar",
+  computed: {
+    ...mapGetters({
+      menus: 'get_menus'
+    }),
+    posts() {
+      return this.menus.map((m) => m.posts.find((p) => p.slug == this.slug))
+    },
+    post() {
+      return this.posts.find((p) => p != null)
     }
+  }
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

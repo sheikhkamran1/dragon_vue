@@ -68,6 +68,19 @@
           </div>
         </div>
       </section>
+      
+      <!-- Offers Image -->
+      <div class="section">
+        <div class="container-fluid">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4" v-for="(offer,index) in offers" :key="index">
+                {{ offers }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </template-view>
 </template>
@@ -85,7 +98,9 @@ export default {
       about: 'get_about',
       message: 'get_message',
       schemes: 'get_schemes',
-      schemeLoading: 'get_schemes_loading'
+      schemeLoading: 'get_schemes_loading',
+      offers: 'get_offers',
+      offerLoading: 'get_offers_loading',
     })
   }
 }
