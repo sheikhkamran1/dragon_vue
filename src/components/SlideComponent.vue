@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <vue-flux :options="fluxOptions" :images="fluxImages" :transitions="fluxTransitions" ref="slider">
             <flux-pagination slot="pagination"></flux-pagination>
         </vue-flux>

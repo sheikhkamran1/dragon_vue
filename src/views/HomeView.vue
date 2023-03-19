@@ -9,7 +9,6 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6 mb-2">
-              <!-- <h3 class="text-secondary text-center">{{ $about->title }}</h3> -->
               <h3 class="text-secondary">{{ about.title }}</h3>
               <p class="" v-html="about.description"></p>
               <a href="" class="text-secondary">Learn More <i class="fa fa-long-arrow-right ms-1"
@@ -51,13 +50,13 @@
         </div>
       </section>
       <!-- Schemes -->
-      <div class="container" v-if="schemeLoading">
-        loading...
+      <div class="container py-4" v-if="schemeLoading">
+        <img src="@/assets/loading.gif" class="d-block text-center" alt="" width="50 !important" style=" display: block;margin-left: auto !important; margin-right: auto !important;">
       </div>
       <section v-else>
-        <div class="container-fluid bg-light">
+        <div class="container-fluid bg-light  py-5">
           <div class="container">
-            <h3 class="text-secondary text-center  py-3">Our Schemes</h3>
+            <h3 class="text-secondary text-center ">Our Schemes</h3>
             <!-- {{ schemes }} -->
             <carousel :autoplay="true" :items="4" :nav="false"
               :responsive="{ 0: { items: 1, nav: false }, 600: { items: 4, nav: false } }">
@@ -68,19 +67,29 @@
           </div>
         </div>
       </section>
-      
+
       <!-- Offers Image -->
-      <div class="section">
-        <div class="container-fluid">
+      <div class="container py-4" v-if="offerLoading">
+        <img src="@/assets/loading.gif" class="d-block text-center" alt="" width="50 !important" style=" display: block;margin-left: auto !important; margin-right: auto !important;">
+      </div>
+      <section class="section">
+        <div class="container-fluid py-5">
           <div class="container">
             <div class="row">
-              <div class="col-md-4" v-for="(offer,index) in offers" :key="index">
-                {{ offers }}
+              <h3 class="text-secondary text-center  py-3">Current Offers</h3>
+              <div class="col-md-4" v-for="(offer, index) in offers" :key="index">
+                <el-card class="card">
+                  <img :src="offer.featured_image" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text">{{ offer.title }}</p>
+                  </div>
+                </el-card>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
     </section>
   </template-view>
 </template>
@@ -92,7 +101,7 @@ import { mapGetters } from 'vuex';
 import carousel from 'vue-owl-carousel2'
 
 export default {
-  components: { TemplateView, SlideComponent, carousel},
+  components: { TemplateView, SlideComponent, carousel },
   computed: {
     ...mapGetters({
       about: 'get_about',

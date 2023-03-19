@@ -12,7 +12,7 @@
 import { mapActions } from 'vuex';
 export default {
   methods: {
-    ...mapActions(['getProfile', 'getSlides', 'getAbout', 'getMessage','getSchemes','getMenus','getPosts','getOffers'])
+    ...mapActions(['getProfile', 'getSlides', 'getAbout', 'getMessage','getSchemes','getMenus','getPosts','getOffers','getGallery','getDownload','getNotice','getEvent'])
   },
   created() {
     this.getProfile(),
@@ -22,7 +22,11 @@ export default {
       this.getSchemes(),
       this.getMenus(),
       this.getPosts(),
-      this.getOffers()
+      this.getOffers(),
+      this.getGallery(),
+      this.getDownload(),
+      this.getNotice(),
+      this.getEvent()
   }
 }
 </script>
@@ -39,7 +43,15 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-
+.header {
+            height: 60vh;
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://dragonsaving.com.np/wp-content/uploads/2021/01/d_finance_banner-1.jpg') repeat no-repeat;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
 /* 
 nav {
   padding: 30px;

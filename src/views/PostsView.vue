@@ -1,30 +1,53 @@
 <template>
     <template-view>
-        <section class="py-5">
-            <div class="container">
-              
-            </div>
-        </section>
+     <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" v-for="(post, index) in post" :key="index">
+            <p>
+            {{ post.content }}
+            </p>
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+     </section>
     </template-view>
-</template>
-<script>
-import TemplateView from '@/views/TemplateView'
-import { mapGetters } from 'vuex';
-export default {
-    name: "PostsView",
-    components: { TemplateView },
-    props: ['slug'],
-    computed: {
+  </template>
+  <script>
+  import TemplateView from '@/views/TemplateView'
+  import { mapGetters } from 'vuex';
+    export default {
+      components:{TemplateView},
+      props:['slug'],
+      computed:{
         ...mapGetters({
-            menus: 'get_menus'
+          menus:'get_menus'
         }),
-        posts() {
-            return this.menus.map((m) => m.posts.find((p) => p.slug == this.slug))
+        filterPosts(){
+          return this.menus.map((m) => m.posts.find((p) => p.slug == this.slug))
         },
-        posts() {
-            return this.posts.find((p) => p != null)
+        post(){
+          return this.filterPosts.find((p) => p != null)
         }
-    },
-}
-</script>
-<style lang="scss" scoped></style>
+      },
+    }
+  </script>
+  <style lang="scss" scoped>
+  </style>
+  white_check_mark
+  eyes
+  raised_hands
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
