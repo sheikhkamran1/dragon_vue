@@ -8,7 +8,7 @@
                         width="80"  height="80" class="logo img-fluid mx-auto d-block">
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 text-center">
                     <h3>Useful Links</h3>
 
                     <li><a href="https://www.nrb.org.np/" target="_blank" rel="noopener noreferrer">www.nrb.org.np</a></li>
@@ -22,7 +22,7 @@
                     </li>
 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 text-center">
                     <h3>Quick Links</h3>
 
                     <li><a href="">Home</a></li>
@@ -33,7 +33,7 @@
                     <li><a href="">Contact us</a></li>
 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 text-center">
                     <h3>Address</h3>
                     <li class="text-light"><span><i class="fa fa-map-marker" aria-hidden="true"></i> {{ company.city }} {{
                         company.street }}</span></li>

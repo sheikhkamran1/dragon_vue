@@ -2,7 +2,7 @@
     <template-view>
         <section>
     <div class="header">
-        <h3 class=" text-light text-center">Gallery</h3>
+        <h3 class=" text-light text-center" style="padding-top: 180px;">Gallery</h3>
     </div>
             <div class="container py-4" v-if="schemeLoading">
                 <img src="@/assets/loading.gif" class="d-block text-center" alt="" width="50 !important"

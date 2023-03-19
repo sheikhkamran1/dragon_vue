@@ -4,9 +4,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12" v-for="(post, index) in post" :key="index">
-            <p>
-            {{ post.content }}
-            </p>
+            <!-- <p v-html="post.content"></p> -->
+            <!-- {{ post }} -->
+            <h1>{{ post.title }}</h1>
           </div>
         </div>
         <div>

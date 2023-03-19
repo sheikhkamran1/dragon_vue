@@ -1,8 +1,10 @@
 <template>
     <template-view>
-        <div>
-        <h1>I am Contact</h1>
-    </div>
+      <section>
+        <div class="header">
+                <h3 class=" text-light text-center" style="padding-top: 180px;">Contact us</h3>
+            </div>
+      </section>
     </template-view>
 </template>
 
