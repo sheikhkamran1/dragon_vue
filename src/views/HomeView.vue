@@ -72,20 +72,22 @@
       <div class="container py-4" v-if="offerLoading">
         <img src="@/assets/loading.gif" class="d-block text-center" alt="" width="50 !important" style=" display: block;margin-left: auto !important; margin-right: auto !important;">
       </div>
-      <section class="section">
+      <section class="section" v-else>
         <div class="container-fluid py-5">
           <div class="container">
-            <div class="row">
               <h3 class="text-secondary text-center  py-3">Current Offers</h3>
-              <div class="col-md-4" v-for="(offer, index) in offers" :key="index">
-                <el-card class="card">
+              <carousel :autoplay="true" :items="2" :nav="false" :margin="5"
+              :responsive="{ 0: { items: 1, nav: false }, 600: { items: 2, nav: false } }">
+              <div v-for="(offer, index) in offers" :key="index" >
+                <el-card shadow="none" >
                   <img :src="offer.featured_image" class="card-img-top" alt="...">
                   <div class="card-body">
                     <p class="card-text">{{ offer.title }}</p>
                   </div>
                 </el-card>
               </div>
-            </div>
+            </carousel>
+            
           </div>
         </div>
       </section>

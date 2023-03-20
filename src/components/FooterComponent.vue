@@ -42,7 +42,8 @@
                     <li class="text-light"><a href="mailto:dragon.scco@gmail.com"><i class="fa fa-envelope"
                                 aria-hidden="true"></i> {{ company.email }}</a></li>
                 </div>
-            </div>
+            </div><hr>
+            <strong class="text-light">Copyright © 2021 DRAGON SCCO | Powered by Code IT Pvt. Ltd</strong>
         </div>
     </section>
 </template>

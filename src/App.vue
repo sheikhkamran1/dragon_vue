@@ -12,7 +12,7 @@
 import { mapActions } from 'vuex';
 export default {
   methods: {
-    ...mapActions(['getProfile', 'getSlides', 'getAbout', 'getMessage','getSchemes','getMenus','getPosts','getOffers','getGallery','getDownload','getNotice','getEvent'])
+    ...mapActions(['getProfile', 'getSlides', 'getAbout', 'getMessage','getSchemes','getMenus','getPosts','getOffers','getGallery','getDownload','getNotice','getEvent','getContact'])
   },
   created() {
     this.getProfile(),
@@ -26,7 +26,8 @@ export default {
       this.getGallery(),
       this.getDownload(),
       this.getNotice(),
-      this.getEvent()
+      this.getEvent(),
+      this.getContact
   }
 }
 </script>

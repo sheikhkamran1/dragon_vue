@@ -1,16 +1,18 @@
 <template>
     <template-view>
-     <section class="py-5">
-      <div class="container">
+     <section>
+      <div class="container-fluid py-5"  style="background-color: #E9FAFF;">
+        <div class="container">
         <div class="row">
-          <div class="col-md-12" v-for="(post, index) in post" :key="index">
-            <!-- <p v-html="post.content"></p> -->
-            <!-- {{ post }} -->
-            <h1>{{ post.title }}</h1>
-          </div>
+            <div class="col-md-12">
+                <h1 class="text-center">{{ post.title }}</h1>
+               <img :src="post.image" class="img-fluid" alt="">
+               <div v-html="post.content"></div>
+            </div>
         </div>
         <div>
         </div>
+      </div>
       </div>
      </section>
     </template-view>
@@ -29,16 +31,14 @@
           return this.menus.map((m) => m.posts.find((p) => p.slug == this.slug))
         },
         post(){
-          return this.filterPosts.find((p) => p != null)
+        return this.filterPosts.find((p) => p != null)
         }
       },
     }
   </script>
   <style lang="scss" scoped>
   </style>
-  white_check_mark
-  eyes
-  raised_hands
+
   
   
   
